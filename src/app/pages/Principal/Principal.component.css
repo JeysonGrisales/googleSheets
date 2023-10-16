@@ -1,0 +1,433 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', serif;
+font-family: 'Roboto Slab', serif;
+}
+
+*::-webkit-scrollbar {
+    width: var(--scroll-size, 6px);
+    height: var(--scroll-size, 10px);
+}
+
+*::-webkit-scrollbar-track {
+    background-color: var(--scroll-track, transparent);
+    border-radius: var(--scroll-track-radius, var(--scroll-radius));
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-color, rgb(214, 210, 210));
+    background-image: var(--scroll-thumb, none);
+    border-radius: var(--scroll-thumb-radius, var(--scroll-radius));
+    border-radius: 5px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(4, 72, 104);
+}
+
+header img {
+    width: 12%;
+    height: 75%;
+    margin-right: 1rem;
+}
+
+header h1 {
+    margin-left: 2rem;
+    width: fit-content;
+    color: white;
+    font-size: 45px;
+    margin-left: 1rem;
+}
+
+#containerPrincipal {
+    width: 100%;
+    height: 85%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgb(14, 123, 173);
+    margin-bottom: 5px solid black;
+}
+
+#listClients {
+    width: 47.5%;
+    height: 90%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    background: rgb(14, 123, 173);
+    border: 4px solid white;
+    color: white;
+}
+
+#clientSelected {
+    width: 47.5%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    background: rgb(14, 123, 173);
+    border: 4px solid white;
+    color: white;
+}
+
+#tarjetaDefault {
+    width: 100%;
+    height: 45px;
+    margin: .5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#textDefault {
+    width: 24%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(70, 70, 70);
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bolder;
+    margin: 0 0 0px
+}
+
+.tarjeta {
+    width: 100%;
+    height: auto;
+    margin: .5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tarjeta button {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: none;
+    background: transparent;
+}
+
+.tarjeta p {
+    width: 24%;
+    min-height: 45px;
+    max-height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(207, 207, 207);
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 0 0px
+}
+
+/* CRUD */
+
+#contInfo {
+    width: 90%;
+    height: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* AGREGAR */
+#AddClient {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    border-bottom: 1px solid white;
+}
+
+#AddClient h3 {
+    width: 100%;
+    font-size: 22px;
+    text-align: center;
+}
+
+#AddClient input {
+    width: 30%;
+    height: 15%;
+    border-radius: 5px;
+}
+
+#AddClient button {
+    width: auto;
+    height: 18%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+}
+
+/* ACTUALIZAR */
+
+#UpdateClient {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    border-top: 1px solid white;
+}
+
+#UpdateClient h3 {
+    width: 100%;
+    font-size: 22px;
+    text-align: center;
+
+}
+
+#UpdateClient input {
+    width: 30%;
+    height: 15%;
+    border-radius: 5px;
+}
+
+#UpdateClient button {
+    width: auto;
+    height: 18%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Confirmacion */
+
+#contPrincipalConf {
+    width: 100%;
+    height: 100%;
+    background-color: #000000bb;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
+}
+
+#containerConfirmation {
+    width: auto;
+    height: auto;
+    padding: 20px;
+    background: white;
+    border: 3px solid white;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.2rem;
+    border-radius: 10px;
+    z-index: 20;
+}
+
+#containerConfirmation div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#btnConfirm {
+    width: auto;
+    height: 3rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    background: rgb(14, 123, 173);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#btnCancel {
+    width: auto;
+    height: 3rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    background: rgb(211, 11, 11);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#containerConfirmation p {
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Ventana Emergente */
+#windowShow {
+    width: auto;
+    height: 3.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: #ffffff;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    gap: 1rem;
+    top: 85%;
+    transform: translate(-50%, -50%);
+    transform: translateY(0%);
+    transition: all 500ms ease-in-out;
+    z-index: 10000;
+}
+
+#windowHide {
+    width: auto;
+    height: 3.5rem;
+    background: #ffffff;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    gap: 1rem;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    transform: translateY(+1000%);
+    transition: all 500ms ease-in-out;
+    z-index: 10000;
+    visibility: hidden;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+
+    body {
+        min-height: 100vh;
+        height: auto;
+        overflow-y: auto;
+    }
+
+    header {
+        width: 100%;
+        height: 10%;
+        display: flex;
+        align-items: center;
+        background: rgb(4, 72, 104);
+    }
+
+    header img {
+        display: none;
+    }
+
+    header h1 {
+        text-align: center;
+        width: 100%;
+        color: white;
+        font-size: 30px;
+        margin: 0;
+    }
+
+    #containerPrincipal {
+        width: 100%;
+        min-height: 90%;
+        height: auto;
+        overflow-y: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        overflow-y: auto;
+        flex-direction: column;
+        background: rgb(14, 123, 173);
+        margin-bottom: 5px solid black;
+    }
+
+    #listClients {
+        width: 95%;
+        height: 20rem;
+        display: flex;
+        text-align: center;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        overflow-y: auto;
+        background: rgb(14, 123, 173);
+        color: white;
+    }
+
+    #clientSelected {
+        width: 95%;
+        height: 25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+        background: rgb(14, 123, 173);
+        color: white;
+    }
+}
