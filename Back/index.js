@@ -18,8 +18,6 @@ const client = new google.auth.JWT(
 );
 const sheetId = '1hmRAol5kjLDuciEu9B2hSz3ovfGnOJePUz6KmQGagkQ'
 
-//Leer
-
 app.get('/api/data', async (req, res) => {
     try {
         await client.authorize();
@@ -34,8 +32,6 @@ app.get('/api/data', async (req, res) => {
         res.status(500).send('Error fetching data');
     }
 });
-
-//Crear
 
 app.post('/api/send', async (req, res) => {
     const newData = req.body;
@@ -59,8 +55,6 @@ app.post('/api/send', async (req, res) => {
         res.status(500).send('Error adding data');
     }
 });
-
-//Actualizar
 
 app.put('/api/update/:id', async (req, res) => {
     const rowId = parseInt(req.params.id) + 2;
@@ -87,8 +81,6 @@ app.put('/api/update/:id', async (req, res) => {
         res.status(500).send('Error actualizando datos');
     }
 });
-
-//Eliminar
 
 app.delete('/api/delete/:id', async (req, res) => {
     const rowId = parseInt(req.params.id) + 2;

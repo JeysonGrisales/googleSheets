@@ -1,10 +1,11 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Playfair Display', serif;
-font-family: 'Roboto Slab', serif;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* Scrollbar styles */
 *::-webkit-scrollbar {
     width: var(--scroll-size, 6px);
     height: var(--scroll-size, 10px);
@@ -19,7 +20,6 @@ font-family: 'Roboto Slab', serif;
     background-color: var(--scroll-thumb-color, rgb(214, 210, 210));
     background-image: var(--scroll-thumb, none);
     border-radius: var(--scroll-thumb-radius, var(--scroll-radius));
-    border-radius: 5px;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -32,43 +32,57 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    background-color: #f5f5f5;
+    color: #333;
 }
 
 header {
     width: 100%;
-    height: 15%;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgb(4, 72, 104);
+    background: #0b8dc9;
+    padding: 0 20px;
 }
 
 header img {
-    width: 12%;
-    height: 75%;
-    margin-right: 1rem;
+    width: 40px;
+    height: 40px;
 }
 
 header h1 {
-    margin-left: 2rem;
-    width: fit-content;
+    margin-left: 20px;
     color: white;
-    font-size: 45px;
-    margin-left: 1rem;
+    font-size: 1.5rem;
 }
 
 #containerPrincipal {
     width: 100%;
-    height: 85%;
+    height: calc(100vh - 60px);
     position: relative;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: rgb(14, 123, 173);
-    margin-bottom: 5px solid black;
+    background: #fafafa;
+    border-bottom: 5px solid black;
+}
+
+#listClients,
+#clientSelected {
+    width: 47.5%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #009bd8;
+    border: 4px solid #727272;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 #listClients {
@@ -80,55 +94,45 @@ header h1 {
     align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-    overflow-y: auto;
-    background: rgb(14, 123, 173);
-    border: 4px solid white;
+    overflow-y: auto; /* Agregar scroll vertical */
+    background: #009bd8;
+    border: 4px solid #727272;
     color: white;
-}
+    border-radius: 10px;
+  }
 
 #clientSelected {
-    width: 47.5%;
-    height: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     gap: 1rem;
-    background: rgb(14, 123, 173);
-    border: 4px solid white;
-    color: white;
+    color: #000;
 }
 
-#tarjetaDefault {
+#tarjetaDefault,
+.tarjeta {
     width: 100%;
     height: 45px;
-    margin: .5rem;
+    margin: 0.5rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background: #f3f3f3;
+    color: #000;
+    border-radius: 10px;
 }
 
-#textDefault {
+#textDefault,
+.tarjeta p {
     width: 24%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(70, 70, 70);
-    color: white;
+    background: #f3f3f3;
+    color: #000;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-weight: bolder;
-    margin: 0 0 0px
-}
-
-.tarjeta {
-    width: 100%;
-    height: auto;
-    margin: .5rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 0 0 0px;
 }
 
 .tarjeta button {
@@ -139,72 +143,27 @@ header h1 {
     align-items: center;
     border: none;
     background: transparent;
+    border-radius: 10px;
+    transition: 0.3s;
 }
 
-.tarjeta p {
-    width: 24%;
-    min-height: 45px;
-    max-height: 200px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgb(207, 207, 207);
-    color: black;
+.tarjeta p:hover {
+    background: #ffffff;
+    font-size: 20px;
+    transition: 0.3s;
     cursor: pointer;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0 0 0px
 }
-
-/* CRUD */
 
 #contInfo {
     width: 90%;
     height: 95%;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    flex-direction: column;
 }
 
-/* AGREGAR */
-#AddClient {
-    width: 100%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: .5rem;
-    border-bottom: 1px solid white;
-}
-
-#AddClient h3 {
-    width: 100%;
-    font-size: 22px;
-    text-align: center;
-}
-
-#AddClient input {
-    width: 30%;
-    height: 15%;
-    border-radius: 5px;
-}
-
-#AddClient button {
-    width: auto;
-    height: 18%;
-    padding-left: 10px;
-    padding-right: 10px;
-    background: transparent;
-    border: 2px solid white;
-    border-radius: 5px;
-    color: white;
-}
-
-/* ACTUALIZAR */
-
+#AddClient,
 #UpdateClient {
     width: 100%;
     height: 50%;
@@ -212,40 +171,52 @@ header h1 {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: .5rem;
-    border-top: 1px solid white;
+    gap: 2rem;
 }
 
+#AddClient h3,
 #UpdateClient h3 {
     width: 100%;
-    font-size: 22px;
+    background-color: #ffffff;
+    font-size: 1.5rem;
     text-align: center;
-
+    border-radius: 10px;
 }
 
+#AddClient input,
 #UpdateClient input {
     width: 30%;
     height: 15%;
     border-radius: 5px;
+    border: none;
+    padding: 10px;
 }
 
+#AddClient button,
 #UpdateClient button {
     width: auto;
     height: 18%;
-    padding-left: 10px;
-    padding-right: 10px;
-    background: transparent;
-    border: 2px solid white;
+    padding: 0 10px;
+    background: #ffffffb9;
+    border: 2px solid rgb(38, 247, 167);
     border-radius: 5px;
-    color: white;
+    color: #000;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+#AddClient button:hover,
+#UpdateClient button:hover {
+    height: 20%;
+    transition: 0.2s;
+    cursor: pointer;
 }
 
 button {
     cursor: pointer;
 }
 
-/* Confirmacion */
-
+/* Confirmation */
 #contPrincipalConf {
     width: 100%;
     height: 100%;
@@ -268,9 +239,9 @@ button {
     border: 3px solid white;
     color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     gap: 1.2rem;
     border-radius: 10px;
     z-index: 20;
@@ -284,97 +255,66 @@ button {
     align-items: center;
 }
 
-#btnConfirm {
-    width: auto;
-    height: 3rem;
-    padding-left: 10px;
-    padding-right: 10px;
-    background: transparent;
-    border: 2px solid white;
-    border-radius: 5px;
-    background: rgb(14, 123, 173);
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-}
-
+#btnConfirm,
 #btnCancel {
     width: auto;
     height: 3rem;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0 10px;
     background: transparent;
     border: 2px solid white;
     border-radius: 5px;
-    background: rgb(211, 11, 11);
     color: white;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1rem;
+}
+
+#btnConfirm {
+    background: rgb(14, 123, 173);
+}
+
+#btnCancel {
+    background: rgb(211, 11, 11);
 }
 
 #containerConfirmation p {
     width: 100%;
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: bold;
     color: black;
 }
 
-/* Ventana Emergente */
-#windowShow {
+/* Popup Window */
+#windowShow,
+#windowHide {
     width: auto;
     height: 3.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0 1rem;
     background: #ffffff;
-    font-size: 16px;
+    font-size: 1rem;
+    border-radius: 10px;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
     gap: 1rem;
-    top: 85%;
-    transform: translate(-50%, -50%);
     transform: translateY(0%);
     transition: all 500ms ease-in-out;
     z-index: 10000;
 }
 
 #windowHide {
-    width: auto;
-    height: 3.5rem;
-    background: #ffffff;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    gap: 1rem;
-    top: 90%;
-    transform: translate(-50%, -50%);
-    transform: translateY(+1000%);
-    transition: all 500ms ease-in-out;
-    z-index: 10000;
+    top: 100%;
+    transform: translateY(1000%);
     visibility: hidden;
 }
 
-/* Responsive */
-
+/* Responsive Styles */
 @media (max-width: 800px) {
-
     body {
         min-height: 100vh;
         height: auto;
         overflow-y: auto;
-    }
-
-    header {
-        width: 100%;
-        height: 10%;
-        display: flex;
-        align-items: center;
-        background: rgb(4, 72, 104);
     }
 
     header img {
@@ -384,50 +324,40 @@ button {
     header h1 {
         text-align: center;
         width: 100%;
-        color: white;
-        font-size: 30px;
+        font-size: 1.2rem;
         margin: 0;
     }
 
     #containerPrincipal {
-        width: 100%;
-        min-height: 90%;
-        height: auto;
-        overflow-y: auto;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        overflow-y: auto;
-        flex-direction: column;
-        background: rgb(14, 123, 173);
-        margin-bottom: 5px solid black;
+        border: 5px solid black;
     }
 
     #listClients {
         width: 95%;
         height: 20rem;
-        display: flex;
-        text-align: center;
-        justify-content: space-around;
-        align-items: flex-start;
-        flex-direction: row;
-        flex-wrap: wrap;
-        overflow-y: auto;
-        background: rgb(14, 123, 173);
         color: white;
     }
 
-    #clientSelected {
-        width: 95%;
-        height: 25rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 1rem;
-        background: rgb(14, 123, 173);
-        color: white;
+    #textDefault {
+        font-size: 0.9rem;
+    }
+
+    .tarjeta p {
+        font-size: 0.8rem;
+    }
+
+    #AddClient h3,
+    #UpdateClient h3 {
+        font-size: 1rem;
+        border-radius: 4px;
+    }
+
+    #AddClient button,
+    #UpdateClient button {
+        top: 1rem;
+    }
+
+    #UpdateClient h3 {
+        top: 2rem;
     }
 }

@@ -4,7 +4,7 @@
         alt="">
 </header>
 
-<section *ngIf="showConfirmation" id="contPrincipalConf">
+<div *ngIf="showConfirmation" id="contPrincipalConf">
     <div id="containerConfirmation">
         <p>¿Desea eliminar al cliente "{{userUpdate}}"?</p>
         <div id="containerBtn">
@@ -12,71 +12,57 @@
             <button id="btnCancel" (click)="deleteData()">Confirmar</button>
         </div>
     </div>
-</section>
+</div>
 
-<section id="containerPrincipal">
-
+<div id="containerPrincipal">
     <div [id]="showWindow ? 'windowShow' : 'windowHide'">
         <p>{{newText}}</p>
         <p>{{newIcon}}</p>
     </div>
 
     <div id="listClients">
-
-        <section id="tarjetaDefault">
+        <div id="tarjetaDefault">
             <p id="textDefault">Servicio</p>
             <p id="textDefault">Identificación</p>
             <p id="textDefault">Nombre</p>
             <p id="textDefault">Télefono</p>
-        </section>
+        </div>
 
         <div *ngIf="data; else dataExists">
             <h1>No hay clientes para mostrar</h1>
         </div>
-
-        <!-- Leer -->
         <ng-template #dataExists>
             <div *ngFor="let detalles of listPeople,let i = index" class="tarjeta">
-
                 <button (click)="updateInputs(i)">
                     <p title={{detalles[0]}}>{{detalles[0]}}</p>
                     <p title={{detalles[1]}}>{{detalles[1]}}</p>
                     <p title={{detalles[2]}}>{{detalles[2]}}</p>
                     <p title={{detalles[3]}}>{{detalles[3]}}</p>
                 </button>
-
             </div>
         </ng-template>
     </div>
 
     <div id="clientSelected">
-
-        <section id="contInfo">
-
-            <!-- Agregar -->
-            <section id="AddClient">
+        <div id="contInfo">
+            <div id="AddClient">
                 <h3>Crear cliente</h3>
-                <input [(ngModel)]="inputCreate1" placeholder="Servicio" (input)="limitarLongitud($event,5)" />
-                <input [(ngModel)]="inputCreate2" placeholder="Identificación" (input)="limitarLongitud($event,10)" />
-                <input type="text" [(ngModel)]="inputCreate3" placeholder="Nombre"
-                    (input)="limitarLongitud($event,40)" />
-                <input [(ngModel)]="inputCreate4" placeholder="Télefono" (input)="limitarLongitud($event,10)" />
+                <input [(ngModel)]="inputCreateOne" placeholder="Servicio" (input)="informationLimit($event,5)" />
+                <input [(ngModel)]="inputCreateTwo" placeholder="Identificación" (input)="informationLimit($event,10)" />
+                <input type="text" [(ngModel)]="inputCreateThree" placeholder="Nombre" (input)="informationLimit($event,40)" />
+                <input [(ngModel)]="inputCreateFour" placeholder="Télefono" (input)="informationLimit($event,10)" />
                 <button (click)="createData()">Guardar</button>
-            </section>
+            </div>
 
-            <!-- Actualizar y Eliminar-->
-            <section id="UpdateClient">
+            <div id="UpdateClient">
                 <h3>Selecciona un cliente para gestionar</h3>
-                <input [(ngModel)]="manageInput1" placeholder="Servicio" (input)="limitarLongitud($event,9)" />
-                <input [(ngModel)]="manageInput2" placeholder="Identificación" (input)="limitarLongitud($event,9)" />
-                <input type="text" [(ngModel)]="manageInput3" placeholder="Nombre"
-                    (input)="limitarLongitud($event,40)" />
-                <input [(ngModel)]="manageInput4" placeholder="Télefono" (input)="limitarLongitud($event,9)" />
+                <input [(ngModel)]="inputUpdateOne" placeholder="Servicio" (input)="informationLimit($event,9)" />
+                <input [(ngModel)]="inputUpdateTwo" placeholder="Identificación" (input)="informationLimit($event,10)" />
+                <input type="text" [(ngModel)]="inputUpdateThree" placeholder="Nombre" (input)="informationLimit($event,40)" />
+                <input [(ngModel)]="inputUpdateFour" placeholder="Télefono" (input)="informationLimit($event,10)" />
                 <button (click)="updateData()">Actualizar</button>
-                <button (click)="confirmar()">Eliminar</button>
-            </section>
-
-        </section>
-
+                <button (click)="confirm()">Eliminar</button>
+            </div>
+        </div>
     </div>
-</section>
+</div>
