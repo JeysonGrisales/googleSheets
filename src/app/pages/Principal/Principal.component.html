@@ -19,7 +19,7 @@
         <p>{{newText}}</p>
         <p>{{newIcon}}</p>
     </div>
-
+    
     <div id="listClients">
         <div id="tarjetaDefault">
             <p id="textDefault">Servicio</p>
@@ -27,6 +27,7 @@
             <p id="textDefault">Nombre</p>
             <p id="textDefault">Télefono</p>
         </div>
+        <input [(ngModel)]="searchTerm" (input)="search(searchTerm)" placeholder="Buscar..." class="inputSearch">
 
         <div *ngIf="data; else dataExists">
             <h1>No hay clientes para mostrar</h1>

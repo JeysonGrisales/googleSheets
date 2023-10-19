@@ -85,6 +85,15 @@ header h1 {
     overflow: hidden;
 }
 
+.inputSearch{
+    width: 50%;
+    height: 6%;
+    border-style: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
 #listClients {
     width: 47.5%;
     height: 90%;

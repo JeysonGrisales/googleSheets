@@ -1,14 +1,25 @@
 import { Component, OnInit } from "@angular/core";
 import { PeopleService } from "./services/people.service";
 
+interface Person {
+  valueOne: string;
+  valueTwo: string;
+  valueThree: string;
+  valueFour: string;
+}
+
 @Component({
   selector: "app-Principal",
   templateUrl: "./Principal.component.html",
   styleUrls: ["./Principal.component.css"],
 })
+
 export class PrincipalComponent implements OnInit {
+  [x: string]: Object;
   public listPeople: any = [];
   public arrayPosition: any = [];
+  public filteredResults: any = [];
+  public originalList: any = [];
   public data: boolean = false;
   public position: number = 0;
   public showWindow: boolean = false;
@@ -17,6 +28,8 @@ export class PrincipalComponent implements OnInit {
   public newValue = false;
   public newIcon = "";
   public userUpdate = "";
+  public searchTerm: string = "";
+
 
   // Expresiones regulares
   textoRegExp = /^[A-Za-z\s]+$/;
@@ -43,10 +56,28 @@ export class PrincipalComponent implements OnInit {
   public loadData() {
     this.resetInputFields();
     this.peopleSvc.get(`http://localhost:3000/api/data`).subscribe((res) => {
+      this.originalList = res;
       this.listPeople = res;
       this.data = res === null;
     });
   }
+
+  public search(term: string) {
+    console.log("Término de búsqueda:", term);
+    if (term.trim() === "") {
+      // Si el término de búsqueda está vacío, mostrar todos los resultados originales.
+      this.listPeople = this.originalList;
+    } else {
+      // Filtrar la lista de personas utilizando el método some.
+      this.listPeople = this.originalList.filter((person: Person )=>
+        Object.values(person).some(value =>
+          String(value).toLowerCase().includes(term.toLowerCase())
+        )
+      );
+    }
+  }
+  
+  
 
   public createData() {
     if (
